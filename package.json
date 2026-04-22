@@ -1,0 +1,49 @@
+{
+  "name": "pallet",
+  "version": "1.0.0",
+  "description": "General purpose web develop enviroment",
+  "scripts": {
+    "start": "gulp dev",
+    "imagemin": "gulp min",
+    "preview": "gulp build",
+    "publish": "gulp prod --production"
+  },
+  "author": "nao.t",
+  "dependencies": {
+    "@babel/core": "^7.13.15",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.15",
+    "babel-loader": "^8.2.2",
+    "browser-sync": "^2.26.10",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-data": "^1.3.1",
+    "gulp-directory-sync": "^1.2.4",
+    "gulp-ejs": "^5.1.0",
+    "gulp-htmlhint": "^3.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pretty-html": "^2.0.10",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-ssi": "^0.1.3",
+    "gulp-stylus": "^2.7.0",
+    "gulp-wait": "0.0.2",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.1",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "pug": "^3.0.2",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.31.0",
+    "webpack-stream": "^6.1.2"
+  },
+  "volta": {
+    "node": "14.11.0",
+    "npm": "6.14.8"
+  }
+}

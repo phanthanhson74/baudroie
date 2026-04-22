@@ -1,0 +1,145 @@
+/** footer
+======================================= **/
+
+.page-footer {
+	padding: 5rem 0;
+	@include sp {
+		padding: 4rem 0;
+	}
+}
+
+.footer {
+	&-top {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		column-gap: 6.4rem;
+		@include sp {
+			display: block;
+		}
+	}
+	&-logo {
+		display: block;
+		width: 32.3rem;
+		line-height: 0;
+		@include sp {
+			width: 27.3rem;
+			margin-bottom: 4rem;
+		}
+	}
+	&-nav {
+		width: 71.4rem;
+		@include sp {
+			width: 100%;
+		}
+	}
+	&-menu {
+		display: flex;
+		flex-flow: row wrap;
+		gap: 2.2rem 4rem;
+		&_item {
+			width: 21rem;
+			&_link {
+				display: flex;
+				flex-flow: column;
+				color: $color_green;
+				border-bottom: 1px solid $color_green;
+				padding-bottom: 1rem;
+				.en {
+					display: inline-block;
+					font-size: 2.3rem;
+					font-weight: 500;
+					line-height: 1;
+					letter-spacing: 0;
+					font-family: $font_en;
+				}
+				.ja {
+					display: inline-block;
+					font-weight: 600;
+					font-size: 2rem;
+					letter-spacing: 0.08em;
+					line-height: normal;
+				}
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+		}
+		@include sp {
+			gap: 1.2rem 2.2rem;
+			&_item {
+				width: calc(50% - 1.1rem);
+				&_link {
+					.en {
+						font-size: 1.4rem;
+					}
+					.ja {
+						font-size: 1.3rem;
+					}
+				}
+			}
+		}
+	}
+	&-bottom {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		column-gap: 7.4rem;
+		margin-top: 8.6rem;
+		@include sp {
+			display: block;
+			margin: 0;
+		}
+	}
+	&-link {
+		display: flex;
+		column-gap: 2.9rem;
+		a {
+			display: inline-block;
+			color: #707070;
+			font-family: $font_noto;
+			font-size: 1.3rem;
+			font-weight: 600;
+			line-height: normal;
+			letter-spacing: 0.08em;
+			position: relative;
+			padding-right: 2.5rem;
+			&:after {
+				position: absolute;
+				content: '';
+				width: 1.9rem;
+				height: 1.9rem;
+				right: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				background: url(../img/common/ico_blank.svg) left top no-repeat;
+				background-size: cover;
+			}
+		}
+		@include sp {
+			display: block;
+			margin: 4rem 0;
+			li {
+				+li {
+					margin-top: 2rem;
+				}
+			}
+			a {
+				font-size: 1.3rem;
+			}
+		}
+	}
+}
+
+.copyright {
+	display: block;
+	font-size: 1.3rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	line-height: normal;
+	font-family: $font_noto;
+	color: #707070;
+	@include sp {
+
+	}
+}

@@ -1,0 +1,114 @@
+@charset "utf-8";
+// CSS Document
+
+$color_base: #000000;
+$color_orange: #E65A28;
+$color_red: #DA4432;
+$color_gray: #F2F2F2;
+$color_green: #79D64B;
+
+$design_width_pc: 1280;
+$design_width_sp: 375;
+$sp: 768px;
+$pc: 1366px;
+$tb: 1024px;
+$fz_pc: 14;
+$fz_sp: 13;
+$baseFont: 10;
+$lh: 1.75;
+$opacity_hover: 0.75;
+$shadow: 0 4px 10px rgba(#000000, 0.14);
+
+// Z-index
+$z_Pagetop: 10;
+$z_Btn_Contact: 10;
+$z_Hbg: 101;
+$z_Header: 100;
+$z_Gnav: 99;
+$z_Loading: 1000;
+$transition-fadeIn: 1s cubic-bezier(0.66, 0, 0.34, 1);
+$transition: 0.5s cubic-bezier(0.66, 0, 0.34, 1);
+
+
+// Font
+$mincho: serif;
+$gothic: "YuGothic",
+"游ゴシック",
+"Yu Gothic",
+"游ゴシック Medium",
+"Yu Gothic Medium",
+"ヒラギノ⾓ゴ Pro",
+"Hiragino Kaku Gothic Pro",
+"MS PGothic",
+sans-serif;
+
+$font_noto: "Noto Sans JP", sans-serif;
+$font_en: "Montserrat", sans-serif;
+
+$url : '../img/';
+
+@function per($design_width_psd) {
+   $per: percentage($design_width_psd/$design_width_pc);
+   @return #{$per};
+}
+
+@function vw($design_width_psd) {
+   $vw: $design_width_psd / $design_width_sp * 100;
+   @return #{$vw}vw;
+}
+
+@function rem($design_px) {
+   $rem: $design_px / 10;
+   @return $rem+rem;
+}
+
+@mixin fz($font-size, $line-height) {
+   font-size: #{$font-size/10}rem;
+   line-height: #{$line-height/$font-size};
+}
+
+@mixin fz_pt($font-size: 16) {
+   font-size: percentage($font-size/14);
+}
+
+@mixin fz_pt_sp($font-size: 16) {
+   font-size: percentage($font-size/13);
+}
+
+// breakpoint -------------------------------------
+@mixin pc_lg {
+   @media screen and (min-width: $tb + 1) {
+      @content;
+   }
+}
+
+@mixin pc {
+   @media screen and (min-width: $sp + 1) {
+      @content;
+   }
+}
+
+@mixin tb {
+   @media screen and (min-width: $sp + 1) and (max-width: $tb) {
+      @content;
+   }
+}
+
+@mixin sp {
+   @media screen and (max-width: $sp) {
+      @content;
+   }
+}
+
+@mixin clearfix() {
+
+   &::before,
+   &::after {
+      content: '';
+      display: block;
+   }
+
+   &::after {
+      clear: both;
+   }
+}
