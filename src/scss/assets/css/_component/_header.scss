@@ -29,4 +29,18 @@
 			padding: 2.8rem 0;
 		}
 	}
+
+}
+
+.header_mo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;
+
+	a {
+		display: flex;
+		width: 14.8rem;
+		height: 2.7rem;
+	}
 }

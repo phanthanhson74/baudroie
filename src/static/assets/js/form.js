@@ -342,7 +342,7 @@
     function submitForm() {
       // 送信中の状態にする
       submitBtn.disabled = true;
-      submitBtn.querySelector(".form-btn__text").textContent =
+      submitBtn.querySelector(".p-front__form-btn-text").textContent =
         "送信中...";
 
       // reCAPTCHA v3トークンを取得してフォームを送信

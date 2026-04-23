@@ -61,12 +61,9 @@ html.no-scroll {
             box-sizing: border-box;
             justify-content: space-between;
             background-repeat: no-repeat;
-            background-position: 0% 50%;
+            background-position: right center;
             background-size: 200% auto;
-            background-image: linear-gradient(to right,
-                    #FF6600 2.49%,
-                    #FC933E 26.65%,
-                    #EA4848 52.65%);
+            background-image: linear-gradient(to right, #EA4848 0%, #FC933E 50%, #EA4848 100%);
             transition: background-position ease 0.4s;
             z-index: 99;
 
@@ -81,7 +78,7 @@ html.no-scroll {
             }
 
             &:hover {
-                background-position: 100% 50%;
+                background-position: left center;
             }
 
             &::after {
@@ -118,6 +115,7 @@ html.no-scroll {
         max-width: 100%;
         left: 0;
         position: relative;
+        margin-top: 0;
     }
 }
 
@@ -770,7 +768,7 @@ button {
     background-image: linear-gradient(to right, #F56A6C 0%, #FE8970 50%, #E65050 100%);
     color: #fff;
     width: auto;
-    padding: 1rem 2.4rem;
+    padding: 1rem 1.5rem;
     transition: background-position ease 0.4s;
 
     @media (min-width: 960px) {
