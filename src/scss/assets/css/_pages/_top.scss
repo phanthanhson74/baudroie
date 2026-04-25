@@ -156,61 +156,16 @@ button {
         bottom: 0;
         width: 100%;
         z-index: 100;
-        background: #06C152;
-        padding: 1.6rem 2rem;
         display: block;
         opacity: 1;
         transition: all .3s;
 
-        .g-nav_line__tit {
-            color: #fff;
-            font-size: 1.8rem;
-            line-height: 1;
-            margin: 0 0 .8rem;
-
-            &::before {
-                background: #fff;
-                top: auto;
-                bottom: 0;
-            }
-
-            &::after {
-                background: #fff;
-                top: auto;
-                bottom: 0;
-            }
+        .g-nav_line {
+            padding: 0 0 1.6rem;
         }
 
         .g-nav_line__btn {
-            background: #FFFFFF;
-            color: #06C152;
-            font-size: 2rem;
-            line-height: calc(26/20);
-            justify-content: center;
-
-            &::before {
-                display: none;
-            }
-
-            &.shine {
-                opacity: 1;
-                overflow: hidden;
-                position: relative;
-                cursor: pointer;
-
-                &::before {
-                    background: #06C152;
-                    content: "";
-                    display: block;
-                    position: absolute;
-                    top: -100px;
-                    left: 0;
-                    width: 30px;
-                    height: 100%;
-                    opacity: 0;
-                    animation: shine 2.5s linear infinite;
-                }
-            }
+            top: 0;
         }
     }
 }
@@ -861,18 +816,37 @@ button {
 }
 
 
-.p-thanks {
-    background: url(../img/bg_thank.png) no-repeat;
-    background-size: cover;
-    background-position: center;
-    padding: 5rem 1.8rem 5rem;
-
-    &__head {
-        padding: 0 1rem 4rem;
+.p-thank {
+    &__top {
+        padding: 4rem 1.6rem;
     }
 
-    &__desc {
-        padding: 0 0 3.2rem;
+    &__pitch {
+        padding: 0 1.6rem 3rem;
+
+        &-title {
+            padding: 0 0 1.6rem;
+        }
+    }
+
+    &__video {
+        padding: 0 1.6rem 4rem;
+
+        p {
+            padding: 0 0 1.6rem;
+        }
+    }
+
+    &__txt {
+        padding: 0 1.6rem 5rem;
+    }
+
+    .g-nav_line {
+        padding: 0 1.6rem 6rem;
+    }
+
+    .g-nav_line__btn {
+        top: 0;
     }
 }
 

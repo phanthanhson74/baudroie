@@ -114,6 +114,15 @@ $(function () {
   smoothScroll();
 });
 
+document.querySelector('.l-footer__page-top').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 
 /* SET VW
 ********************************************** */
