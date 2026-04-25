@@ -44,10 +44,6 @@ const swiper = new Swiper(".swiper", {
     nextEl: '.p-interview .nav-next',
     prevEl: '.p-interview .nav-prev',
   },
-  autoplay: {
-    delay: 4000,
-    disableOnInteraction: true,
-  },
   breakpoints: {
     768: {
       slidesPerView: "auto",
@@ -57,7 +53,7 @@ const swiper = new Swiper(".swiper", {
 
 $(function () {
   var smoothScroll = function () {
-    var $header = $(".page-header");
+    var $header = $(".l-header");
     var headerHeight = $header.innerHeight();
     var speed = 500;
     var smoothScrollC = {
@@ -73,7 +69,7 @@ $(function () {
         if ($hash.length) {
           $("html, body").animate(
             {
-              scrollTop: $hash.offset().top,
+              scrollTop: $hash.offset().top - headerHeight,
             },
             speed,
             "swing"
@@ -94,7 +90,7 @@ $(function () {
           var hashP = "#" + this.anchor;
           $("html, body").animate(
             {
-              scrollTop: $(hashP).offset().top,
+              scrollTop: $(hashP).offset().top - headerHeight,
             },
             speed,
             "swing"
