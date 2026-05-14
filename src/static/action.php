@@ -6,16 +6,16 @@
 //   SENDGRID_KEY=SendGridのAPIキー
 //   RECAPTCHA_SECRET_KEY=reCAPTCHA v3のシークレットキー
 // ===================================================
-$site_url       = "https://example.com";           // サイトURL
-$site_name      = "株式会社〇〇";                   // 会社名
-$from_email     = "noreply@example.com";           // 送信元メールアドレス
-$from_name      = "株式会社〇〇";                   // 送信元名
+$site_url       = "https://baudroie-lp.ei-ei-shin.com";           // サイトURL
+$site_name      = "【株式会社ボードルア採用特設サイト】";                   // 会社名
+$from_email     = "noreply@ei-ei-shin.com";           // 送信元メールアドレス
+$from_name      = "【株式会社ボードルア採用特設サイト】";                   // 送信元名
 $admin_recipients = [                              // 管理者（通知先）複数設定可
-  ["email" => "admin@example.com", "name" => "管理者"],
+  ["email" => "marke@ei-shin.com", "name" => "管理者"],
   // ["email" => "admin2@example.com", "name" => "管理者2"],
 ];
-$mail_subject_admin = "【〇〇】お問い合わせがありました";  // 管理者宛件名
-$mail_subject_user  = "【〇〇】お問い合わせを受け付けました";  // 応募者宛件名
+$mail_subject_admin = "【株式会社ボードルア採用特設サイト】お問い合わせがありました";  // 管理者宛件名
+$mail_subject_user  = "【株式会社ボードルア採用特設サイト】お問い合わせを受け付けました";  // 応募者宛件名
 $thanks_page    = "thanks.html";                   // 送信成功後のリダイレクト先
 // ===================================================
 
@@ -108,9 +108,9 @@ if (empty($selection)) {
 
 // 個人情報保護方針への同意のバリデーション
 // ※ 同意チェックボックスの name 属性が "privacy" であることを確認すること。
-if (empty($_POST['privacy'])) {
-  $errors['privacy'] = '個人情報保護方針への同意は必須です。';
-}
+// if (empty($_POST['privacy'])) {
+//   $errors['privacy'] = '個人情報保護方針への同意は必須です。';
+// }
 
 // バリデーションエラーが存在する場合は、エラーページへリダイレクト
 if (!empty($errors)) {
@@ -128,13 +128,12 @@ if (!empty($errors)) {
 // ・任意項目は ?? '' でデフォルト値を設定する。
 // ・必須項目は ?? '' 不要。
 // ===================================================
+$experience  = $_POST['experience'];
+$selection  = $_POST['selection'];
 $name       = $_POST['name'];
 $birthday   = "{$birth_year}年{$birth_month}月{$birth_day}日";
 $tel        = $_POST['tel'];
 $email      = $_POST['email'];
-$selection  = $_POST['selection'];
-$university = $_POST['university'] ?? '';  // 任意項目
-$faculty    = $_POST['faculty'] ?? '';     // 任意項目
 
 // ===================================================
 // 【要修正】管理者への通知メール本文
@@ -151,6 +150,12 @@ $notificationEmail->addContent("text/plain", "
 内容を確認し、折り返しご連絡をお願いします。
 
 ---------------------------------
+[ 希望の選考 ]
+{$experience}
+
+[ 希望選考 ]
+{$selection}
+
 [ 氏名 ]
 {$name}
 
@@ -162,15 +167,6 @@ $notificationEmail->addContent("text/plain", "
 
 [ メールアドレス ]
 {$email}
-
-[ 希望選考 ]
-{$selection}
-
-[ 出身大学 ]
-{$university}
-
-[ 学部 ]
-{$faculty}
 
 ---------------------------------
 {$site_name}
@@ -195,6 +191,12 @@ $autoReplyEmail->addContent("text/plain", "
 
 ---------------------------------
 
+[ 希望の選考 ]
+{$experience}
+
+[ 希望選考 ]
+{$selection}
+
 [ 氏名 ]
 {$name}
 
@@ -206,15 +208,6 @@ $autoReplyEmail->addContent("text/plain", "
 
 [ メールアドレス ]
 {$email}
-
-[ 希望選考 ]
-{$selection}
-
-[ 出身大学 ]
-{$university}
-
-[ 学部 ]
-{$faculty}
 
 ---------------------------------
 
