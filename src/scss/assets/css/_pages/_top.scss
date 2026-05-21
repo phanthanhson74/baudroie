@@ -150,26 +150,6 @@ button {
     }
 }
 
-.float-btns {
-    @include sp {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 100;
-        display: block;
-        opacity: 1;
-        transition: all .3s;
-
-        .g-nav_line {
-            padding: 0 0 1.6rem;
-        }
-
-        .g-nav_line__btn {
-            top: 0;
-        }
-    }
-}
-
 .hidden {
     opacity: 0 !important;
 }
@@ -536,6 +516,7 @@ button {
     padding: 1.6rem;
     letter-spacing: 0.04em;
     line-height: 100%;
+    color: #333 !important;
 }
 
 .p-form__card .form-question__inputs .input-group__input::-webkit-input-placeholder {
