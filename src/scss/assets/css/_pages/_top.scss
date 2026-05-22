@@ -150,26 +150,6 @@ button {
     }
 }
 
-.float-btns {
-    @include sp {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        z-index: 100;
-        display: block;
-        opacity: 1;
-        transition: all .3s;
-
-        .g-nav_line {
-            padding: 0 0 1.6rem;
-        }
-
-        .g-nav_line__btn {
-            top: 0;
-        }
-    }
-}
-
 .hidden {
     opacity: 0 !important;
 }
@@ -536,6 +516,7 @@ button {
     padding: 1.6rem;
     letter-spacing: 0.04em;
     line-height: 100%;
+    color: #333 !important;
 }
 
 .p-form__card .form-question__inputs .input-group__input::-webkit-input-placeholder {
@@ -609,10 +590,14 @@ button {
     line-height: 1.2;
     -webkit-box-shadow: 0px 0px 1rem rgba(200, 200, 207, 0.3);
     box-shadow: 0px 0px 1rem rgba(200, 200, 207, 0.3);
-    color: #BABABA;
+    color: #333333;
 
     @include sp {
         padding: 1.4rem 2.7rem 1.4rem 1.6rem;
+    }
+
+    &:invalid {
+        color: #BABABA;
     }
 }
 
@@ -881,4 +866,8 @@ button {
         right: calc((100% - 1280px) / 2 + 900px);
         left: auto;
     }
+}
+
+.grecaptcha-badge {
+    z-index: 2;
 }

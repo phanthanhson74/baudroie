@@ -6,16 +6,18 @@
 //   SENDGRID_KEY=SendGridのAPIキー
 //   RECAPTCHA_SECRET_KEY=reCAPTCHA v3のシークレットキー
 // ===================================================
-$site_url       = "https://baudroie-lp.ei-ei-shin.com";           // サイトURL
-$site_name      = "【株式会社ボードルア採用特設サイト】";                   // 会社名
-$from_email     = "noreply@ei-ei-shin.com";           // 送信元メールアドレス
-$from_name      = "【株式会社ボードルア採用特設サイト】";                   // 送信元名
+$site_url       = "http://baudroie-lp.com";           // サイトURL
+$site_name      = "【株式会社ボードルア採用LP】";                   // 会社名
+$from_email     = "noreply@baudroie-lp.com";           // 送信元メールアドレス
+$from_name      = "【株式会社ボードルア採用LP】";                   // 送信元名
 $admin_recipients = [                              // 管理者（通知先）複数設定可
   ["email" => "marke@ei-shin.com", "name" => "管理者"],
-  // ["email" => "admin2@example.com", "name" => "管理者2"],
+  ["email" => "jinji@baudroie.jp", "name" => "管理者2"],
+  ["email" => "r.shinohara@ei-shin.com", "name" => "管理者3"],
+  ["email" => "nina.suzuki@ei-shin.com", "name" => "管理者4"],
 ];
-$mail_subject_admin = "【株式会社ボードルア採用特設サイト】お問い合わせがありました";  // 管理者宛件名
-$mail_subject_user  = "【株式会社ボードルア採用特設サイト】お問い合わせを受け付けました";  // 応募者宛件名
+$mail_subject_admin = "【株式会社ボードルア採用LP】より登録がありました。";  // 管理者宛件名
+$mail_subject_user  = "【株式会社ボードルア採用LP】お問い合わせ完了のご連絡";  // 応募者宛件名
 $thanks_page    = "thanks.html";                   // 送信成功後のリダイレクト先
 // ===================================================
 
@@ -68,8 +70,6 @@ $errors = [];
 // ※ 日本語（ひらがな・カタカナ・漢字）のみ許可。英字も許可する場合は正規表現を修正すること。
 if (empty($_POST['name'])) {
   $errors['name'] = '氏名は必須です。';
-} elseif (!preg_match('/^[\x{3040}-\x{309F}\x{30A0}-\x{30FF}\x{4E00}-\x{9FFF}\x{3400}-\x{4DBF}\s　]+$/u', $_POST['name'])) {
-  $errors['name'] = '氏名はひらがな・カタカナ・漢字で入力してください。';
 }
 
 // 生年月日のバリデーション
@@ -93,9 +93,7 @@ if (empty($tel)) {
 
 // メールアドレスのバリデーション
 $email = $_POST['email'] ?? '';
-if (empty($email)) {
-  $errors['email'] = 'メールアドレスは必須です。';
-} elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
   $errors['email'] = 'メールアドレスの形式が不正です。';
 }
 
@@ -146,31 +144,22 @@ foreach ($admin_recipients as $recipient) {
   $notificationEmail->addTo($recipient['email'], $recipient['name']);
 }
 $notificationEmail->addContent("text/plain", "
-お問い合わせがありました。
-内容を確認し、折り返しご連絡をお願いします。
+【株式会社ボードルア採用LP】
+
+下記の内容登録がありました。
+ご確認の上、対応お願いします。
 
 ---------------------------------
-[ 希望の選考 ]
-{$experience}
 
-[ 希望選考 ]
-{$selection}
-
-[ 氏名 ]
-{$name}
-
-[ 生年月日 ]
-{$birthday}
-
-[ 電話番号 ]
-{$tel}
-
-[ メールアドレス ]
-{$email}
+エンジニア経験: {$experience}
+希望の選考: {$selection}
+電話番号: {$tel}
+氏名: {$name}
+生年月日: {$birthday}
+メールアドレス: {$email}
 
 ---------------------------------
-{$site_name}
-{$site_url}
+このメールは {$site_name} ({$site_url}) から送信されました。
 ");
 
 // ===================================================
@@ -183,31 +172,19 @@ $autoReplyEmail->setFrom($from_email, $from_name);
 $autoReplyEmail->setSubject($mail_subject_user);
 $autoReplyEmail->addTo($email, $name);
 $autoReplyEmail->addContent("text/plain", "
-この度は、{$site_name}よりお問い合わせいただき、
-誠にありがとうございます。
+この度は、{$site_name}へ、お問い合わせいただきありがとうございます。
 
+担当者より、登録いただいた連絡先にご連絡いたします。
 下記の内容で受け付けましたので、ご確認ください。
-担当者よりご連絡いたします。
 
 ---------------------------------
 
-[ 希望の選考 ]
-{$experience}
-
-[ 希望選考 ]
-{$selection}
-
-[ 氏名 ]
-{$name}
-
-[ 生年月日 ]
-{$birthday}
-
-[ 電話番号 ]
-{$tel}
-
-[ メールアドレス ]
-{$email}
+エンジニア経験: {$experience}
+希望の選考: {$selection}
+電話番号: {$tel}
+氏名: {$name}
+生年月日: {$birthday}
+メールアドレス: {$email}
 
 ---------------------------------
 
@@ -215,8 +192,7 @@ $autoReplyEmail->addContent("text/plain", "
 ご返信いただいてもお答えできませんのでご了承ください。
 
 ---------------------------------
-{$site_name}
-{$site_url}
+このメールは {$site_name} ({$site_url}) から送信されました。
 ---------------------------------
 ");
 
